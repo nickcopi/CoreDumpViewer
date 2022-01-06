@@ -1,0 +1,17 @@
+version: '2.0'
+
+services:
+        coredumpview:
+                build: 
+                        context: .
+                environment:
+                        DNH_DIR: "dnethackdir"
+                        DNH_GAME: "dnethack"
+                cap_add:
+                        - SYS_PTRACE 
+                security_opt:
+                        - seccomp:unconfined
+                volumes:
+                        - /mnt/cores:/cores
+                tty: true
+                stdin_open: true
