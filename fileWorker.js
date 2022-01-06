@@ -39,6 +39,10 @@ const deleteCore = (core)=>{
 
 }
 
+const getGdbArgs = (core)=>{
+	return [binaryPath,corePath+core];
+}
+
 const exit = async()=>{
 	await Promise.all(promises);
 }
@@ -47,5 +51,6 @@ module.exports = {
 	getCoreData,
 	renameCore,
 	deleteCore,
+	getGdbArgs,
 	exit
 }

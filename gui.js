@@ -55,6 +55,7 @@ const init = async (cores)=>{
 			}
 		}
 	});
+	let gdb;
 
 	const coreList = blessed.list({
 		parent:box,
@@ -139,6 +140,25 @@ const init = async (cores)=>{
 			fileWorker.deleteCore(target);
 		} else
 			choppingBlock = target;
+	});
+	coreList.key('g',async ()=>{
+		const target = coreList.getItem(coreList.selected).content
+		screen.spawn('gdb',fileWorker.getGdbArgs(target));
+		//screen.render();
+		/*infoBox.setContent('');
+		if(gdb){
+			gdb.detach();
+			gdb.destroy();
+		}
+		gdb = blessed.terminal({
+			parent:infoBox,
+			top:0,
+			left:0,
+			width:'95%',
+			height:'70%',
+			shell:'gdb',
+			args: fileWorker.getGdbArgs(target)
+		});*/
 	});
 	screen.append(box);
 	screen.key(['q', 'C-c'], async function(ch, key) {
