@@ -1,7 +1,8 @@
 const blessed = require('neo-blessed');
+const fileWorker = require('./fileWorker');
 
 
-const init = (cores)=>{
+const init = async (cores)=>{
 	const screen = blessed.screen({
 		smartCSR: true
 	});
@@ -118,6 +119,7 @@ const init = (cores)=>{
 			if(submission){
 				const toRename = coreList.getItem(coreList.selected).content
 				cores.find(cores=>cores.core===toRename).core = submission;
+				fileWorker.renameCore(toRename,submission);
 				coreList.setItem(coreList.selected,submission);
 			}
 			input.detach();
@@ -128,8 +130,19 @@ const init = (cores)=>{
 		screen.render();
 		//console.log(coreList);
 	});
+	let choppingBlock;
+	coreList.key('d',()=>{
+		const target = coreList.getItem(coreList.selected).content
+		if(target === choppingBlock){
+			coreList.removeItem(coreList.selected);
+			screen.render();
+			fileWorker.deleteCore(target);
+		} else
+			choppingBlock = target;
+	});
 	screen.append(box);
-	screen.key(['q', 'C-c'], function(ch, key) {
+	screen.key(['q', 'C-c'], async function(ch, key) {
+		await fileWorker.exit();
 		return process.exit(0);
 	});
 	coreList.focus();
