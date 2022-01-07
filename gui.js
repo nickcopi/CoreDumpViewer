@@ -142,7 +142,7 @@ const init = async (cores)=>{
 		} else
 			choppingBlock = target;
 	});
-	coreList.key('g',async ()=>{
+	coreList.key('v',async ()=>{
 		const target = coreList.getItem(coreList.selected).content
 		screen.spawn('gdb',fileWorker.getGdbArgs(target));
 		//screen.render();
