@@ -4,7 +4,8 @@ const fileWorker = require('./fileWorker');
 
 const init = async (cores)=>{
 	const screen = blessed.screen({
-		smartCSR: true
+		smartCSR: true,
+		mouse:false
 	});
 
 	screen.title = 'Core Dump Viewer';
@@ -17,6 +18,7 @@ const init = async (cores)=>{
 		height: '100%',
 		scrollable:true,
 		content: 'Core Dump Viewer',
+		mouse:false,
 		border: {
 			type: 'line'
 		},
@@ -65,7 +67,6 @@ const init = async (cores)=>{
 		height: '29%',
 		scrollable:true,
 		interactive:true,
-		mouse:true,
 		keys:true,
 		vi:true,
 		content: 'Core Dump Viewer',

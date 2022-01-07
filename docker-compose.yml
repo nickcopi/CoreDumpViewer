@@ -5,8 +5,7 @@ services:
                 build: 
                         context: .
                 environment:
-                        DNH_DIR: "dnethackdir"
-                        DNH_GAME: "dnethack"
+                        SSH_PASS: "coremanpass"
                 cap_add:
                         - SYS_PTRACE 
                 security_opt:
@@ -15,3 +14,5 @@ services:
                         - /mnt/cores:/cores
                 tty: true
                 stdin_open: true
+                ports:
+                - "2222:22"

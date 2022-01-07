@@ -15,7 +15,7 @@ const getCoreData = ()=>{
 	console.log(cores);
 	const backtraces = cores.map(core=>{
 		return {
-			backtrace: execSync(`printf "bt\nquit\n" | gdb -silent ${binaryPath} ${corePath}${core}`,{cwd:sourcePath,stdio:['pipe','pipe','ignore']}).toString(),
+			backtrace: execSync(`printf "bt\nquit\n" | gdb -silent ${binaryPath} ${corePath}${core}`,{cwd:sourcePath,stdio:['pipe','pipe','pipe']}).toString(),
 			core: core
 		};
 	});
