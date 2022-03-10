@@ -4,7 +4,7 @@ const {execSync} = require('child_process');
 const corePath = '/cores/';
 const corePrefix = 'core';
 const sourcePath = '/cores/dnh/';
-const binaryPath = sourcePath + 'dnethackdir/dnethack';
+const binaryPath = sourcePath + 'notdnethackdir/notdnethack';
 const promises = [];
 
 
