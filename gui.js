@@ -144,7 +144,7 @@ const init = async (cores)=>{
 	});
 	coreList.key('v',async ()=>{
 		const target = coreList.getItem(coreList.selected).content
-		screen.spawn('gdb',fileWorker.getGdbArgs(target),{cwd:'/cores/dnh'});
+		screen.spawn('/app/gdblaunch.sh',fileWorker.getGdbArgs(target),{cwd:'/cores/dnh'});
 		//screen.render();
 		/*infoBox.setContent('');
 		if(gdb){
