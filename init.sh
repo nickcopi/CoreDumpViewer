@@ -15,4 +15,5 @@ fi
 if [ ! -d "/var/run/sshd" ]; then
   mkdir -p /var/run/sshd
 fi
+echo "export GAME=$GAME" > /tmp/.env
 /usr/sbin/sshd -D
