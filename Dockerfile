@@ -15,4 +15,6 @@ RUN sed -i -e "s/bin\/ash/app\/launch.sh/" /etc/passwd
 
 COPY sshd_config /etc/ssh/sshd_config
 
+COPY .gdbinit /root/.gdbinit
+
 CMD /app/init.sh
